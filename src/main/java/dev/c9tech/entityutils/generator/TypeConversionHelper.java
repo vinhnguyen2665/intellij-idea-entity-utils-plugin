@@ -1,8 +1,8 @@
 package dev.c9tech.entityutils.generator;
 
 import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiPrimitiveType;
 import com.intellij.psi.PsiType;
-import com.intellij.psi.PsiTypes;
 import com.intellij.psi.util.TypeConversionUtil;
 import dev.c9tech.entityutils.model.FieldMappingItem.ConversionKind;
 
@@ -121,15 +121,7 @@ public class TypeConversionHelper {
     }
 
     public static boolean isPrimitive(PsiType type) {
-        if (type == null) return false;
-        return type.equals(PsiTypes.booleanType())
-                || type.equals(PsiTypes.intType())
-                || type.equals(PsiTypes.longType())
-                || type.equals(PsiTypes.doubleType())
-                || type.equals(PsiTypes.floatType())
-                || type.equals(PsiTypes.shortType())
-                || type.equals(PsiTypes.byteType())
-                || type.equals(PsiTypes.charType());
+        return type instanceof PsiPrimitiveType;
     }
 
     private static boolean isDate(String name) {

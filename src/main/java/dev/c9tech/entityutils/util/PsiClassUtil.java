@@ -130,8 +130,9 @@ public class PsiClassUtil {
         if (getter != null) {
             return getter.getName();
         }
-        boolean isBool = PsiTypes.booleanType().equals(field.getType())
-                || "java.lang.Boolean".equals(field.getType().getCanonicalText());
+        PsiType type = field.getType();
+        boolean isBool = "boolean".equals(type.getCanonicalText())
+                || "java.lang.Boolean".equals(type.getCanonicalText());
         return StringUtil.getGetterMethodName(field.getName(), isBool);
     }
 
